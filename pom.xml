@@ -7,7 +7,14 @@
     <groupId>com.wei</groupId>
     <artifactId>agent-chat-server</artifactId>
     <version>1.0</version>
+
     <packaging>pom</packaging>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>4.1.0</version>
+    </parent>
 
     <!--子模块-->
     <modules>
@@ -19,27 +26,54 @@
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <common-lang3.version>3.20.0</common-lang3.version>
+        <common-collections4.version>4.4</common-collections4.version>
+        <lombok.version>1.18.46</lombok.version>
+        <mybatis.version>4.0.0</mybatis.version>
+        <pagehelper.version>4.1.1</pagehelper.version>
+        <spring-cloud.version>2025.1.2</spring-cloud.version>
     </properties>
 
     <!--依赖管理-->
     <dependencyManagement>
         <dependencies>
-            <!--工具包：-->
+            <!-- Spring Boot 4.1 对应的 Spring Cloud 发布列车 -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!--apache工具包-->
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
-                <version>3.20.0</version>
+                <version>${common-lang3.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-collections4</artifactId>
-                <version>4.4</version>
+                <version>${common-collections4.version}</version>
             </dependency>
             <!--lombok-->
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
-                <version>1.18.46</version>
+                <version>${lombok.version}</version>
+            </dependency>
+            <!--mybatis-->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis.version}</version>
+            </dependency>
+            <!--page helper-->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>${pagehelper.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
