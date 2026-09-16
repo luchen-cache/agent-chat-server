@@ -3,3 +3,17 @@ server:
 spring:
   application:
     name: auth-service
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/ai_service?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&useSSL=false
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+
+auth:
+  jwt:
+    secret: ${JWT_SECRET:change-this-local-development-secret-at-least-32-bytes}
+    expiration: 2h
